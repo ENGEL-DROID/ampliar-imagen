@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                // primero se oculta la imagen grande
+                $("#imgGrande").hide();
+                // se guarda la ruta de la imagen pequeña
+                var ruta= $("#thumbnail").attr("src");
+                // luego se pone a la escucha la miniatura cuando se haga click y se monta la data de la ruta para usarla en la función mostrar()
+                $("#thumbnail").bind("click", ruta, mostrar);
+                // se pone a la escucha todo el html para activar la función ocultar()
+                $("html").bind("click", ocultar);
+            })
+            function mostrar(e) {
+                // se evita que el click de mostrar se propague al click de ocultar
+                e.stopPropagation();
+                // se agrega la ruta almacenada al atributo de la imagen grande
+                $("#imgGrande").attr("src", e.data);
+                // finalmente se muestra la imagen grande
+                $("#imgGrande").show();
+            }
+            function ocultar() {
+                // se oculta la imagen grande
+                $("#imgGrande").hide();
+            }
+        </script>
+    </head>
+    <body>
+
+        <h1>Título de la Página</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur veritatis consectetur voluptas eligendi accusantium officiis unde aut a tempora doloribus eaque vero, soluta minus, expedita veniam quibusdam omnis laborum voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet cupiditate architecto adipisci nam. Praesentium perspiciatis consequatur numquam quam neque iusto dolore aspernatur, cupiditate et doloribus placeat recusandae necessitatibus nobis illo?</p>
+        <img src="mango.jpg" id="thumbnail">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt, quas, temporibus fugit quod quasi maiores reiciendis hic est ducimus commodi suscipit molestias, id alias fugiat doloribus nam consequuntur modi? Animi? lorem lorem ipsum dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem atque dolore odit repellendus amet accusamus numquam aliquid debitis. Debitis eum totam sed illo esse dolorum mollitia qui eius odit! </p>
+
+        <img src="#" id="imgGrande">
+    
+    </body>
+</html>
